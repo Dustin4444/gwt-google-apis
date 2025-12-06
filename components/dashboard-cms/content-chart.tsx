@@ -14,21 +14,28 @@ import { Line, Bar } from "react-chartjs-2"
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement)
 
+const getComputedColor = (cssVar: string) => {
+  if (typeof window !== "undefined") {
+    return getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim()
+  }
+  return cssVar
+}
+
 const contentData = {
   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   datasets: [
     {
       label: "Articles Published",
       data: [45, 52, 48, 61, 55, 67, 73, 69, 76, 82, 78, 85],
-      borderColor: "rgb(59, 130, 246)",
-      backgroundColor: "rgba(59, 130, 246, 0.1)",
+      borderColor: "hsl(var(--chart-1))",
+      backgroundColor: "hsl(var(--chart-1) / 0.1)",
       tension: 0.4,
     },
     {
       label: "Page Views (K)",
       data: [12, 15, 13, 18, 16, 22, 25, 23, 28, 32, 29, 35],
-      borderColor: "rgb(16, 185, 129)",
-      backgroundColor: "rgba(16, 185, 129, 0.1)",
+      borderColor: "hsl(var(--chart-2))",
+      backgroundColor: "hsl(var(--chart-2) / 0.1)",
       tension: 0.4,
     },
   ],
@@ -41,22 +48,22 @@ const categoryData = {
       label: "Articles",
       data: [156, 142, 98, 87, 76, 65, 54],
       backgroundColor: [
-        "rgba(59, 130, 246, 0.8)",
-        "rgba(16, 185, 129, 0.8)",
-        "rgba(245, 158, 11, 0.8)",
-        "rgba(239, 68, 68, 0.8)",
-        "rgba(139, 92, 246, 0.8)",
-        "rgba(236, 72, 153, 0.8)",
-        "rgba(6, 182, 212, 0.8)",
+        "hsl(var(--chart-1) / 0.8)",
+        "hsl(var(--chart-2) / 0.8)",
+        "hsl(var(--chart-3) / 0.8)",
+        "hsl(var(--chart-4) / 0.8)",
+        "hsl(var(--chart-5) / 0.8)",
+        "hsl(var(--primary) / 0.8)",
+        "hsl(var(--accent) / 0.8)",
       ],
       borderColor: [
-        "rgb(59, 130, 246)",
-        "rgb(16, 185, 129)",
-        "rgb(245, 158, 11)",
-        "rgb(239, 68, 68)",
-        "rgb(139, 92, 246)",
-        "rgb(236, 72, 153)",
-        "rgb(6, 182, 212)",
+        "hsl(var(--chart-1))",
+        "hsl(var(--chart-2))",
+        "hsl(var(--chart-3))",
+        "hsl(var(--chart-4))",
+        "hsl(var(--chart-5))",
+        "hsl(var(--primary))",
+        "hsl(var(--accent))",
       ],
       borderWidth: 1,
     },
@@ -75,6 +82,7 @@ const chartOptions = {
         font: {
           size: 12,
         },
+        color: "hsl(var(--foreground))",
       },
     },
     title: {
@@ -83,28 +91,35 @@ const chartOptions = {
     tooltip: {
       mode: "index" as const,
       intersect: false,
+      backgroundColor: "hsl(var(--card))",
+      titleColor: "hsl(var(--foreground))",
+      bodyColor: "hsl(var(--foreground))",
+      borderColor: "hsl(var(--border))",
+      borderWidth: 1,
     },
   },
   scales: {
     y: {
       beginAtZero: true,
       grid: {
-        color: "rgba(0, 0, 0, 0.1)",
+        color: "hsl(var(--border) / 0.1)",
       },
       ticks: {
         font: {
           size: 11,
         },
+        color: "hsl(var(--muted-foreground))",
       },
     },
     x: {
       grid: {
-        color: "rgba(0, 0, 0, 0.1)",
+        color: "hsl(var(--border) / 0.1)",
       },
       ticks: {
         font: {
           size: 11,
         },
+        color: "hsl(var(--muted-foreground))",
       },
     },
   },
@@ -158,10 +173,10 @@ export default function ContentChart() {
   return (
     <div className="grid gap-4 sm:gap-6 grid-cols-1 xl:grid-cols-2">
       {/* Content Performance Chart */}
-      <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-3 sm:p-6 border border-gray-200 dark:border-[#1F1F23] w-full min-w-0">
+      <div className="bg-card dark:bg-card rounded-xl p-3 sm:p-6 border border-border dark:border-border w-full min-w-0">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Content Performance</h3>
-          <select className="text-xs sm:text-sm border border-gray-200 dark:border-gray-700 rounded-md px-2 py-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-white w-full sm:w-auto">
+          <h3 className="text-base sm:text-lg font-semibold text-foreground">Content Performance</h3>
+          <select className="text-xs sm:text-sm border border-border rounded-md px-2 py-1 bg-background dark:bg-card text-foreground w-full sm:w-auto">
             <option>Last 12 months</option>
             <option>Last 6 months</option>
             <option>Last 3 months</option>
@@ -173,10 +188,10 @@ export default function ContentChart() {
       </div>
 
       {/* Content by Category Chart */}
-      <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-3 sm:p-6 border border-gray-200 dark:border-[#1F1F23] w-full min-w-0">
+      <div className="bg-card dark:bg-card rounded-xl p-3 sm:p-6 border border-border dark:border-border w-full min-w-0">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Content by Category</h3>
-          <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">This year</span>
+          <h3 className="text-base sm:text-lg font-semibold text-foreground">Content by Category</h3>
+          <span className="text-xs sm:text-sm text-muted-foreground">This year</span>
         </div>
         <div className="h-48 sm:h-64 w-full">
           <Bar data={categoryData} options={window.innerWidth < 640 ? mobileChartOptions : chartOptions} />

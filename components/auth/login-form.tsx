@@ -35,19 +35,19 @@ export function LoginForm() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Brand */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary via-primary/80 to-primary relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url("${backgroundPattern}")` }} />
 
         {/* Decorative Elements */}
-        <div className="absolute top-20 left-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl" />
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-slate-500/10 rounded-full blur-xl" />
+        <div className="absolute top-20 left-20 w-32 h-32 bg-accent/10 rounded-full blur-xl" />
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-muted/10 rounded-full blur-xl" />
 
-        <div className="relative z-10 flex flex-col justify-center px-12 text-white">
+        <div className="relative z-10 flex flex-col justify-center px-12 text-primary-foreground">
           {/* Logo */}
           <div className="flex items-center mb-8">
-            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4">
-              <span className="text-slate-900 font-bold text-xl">C</span>
+            <div className="w-12 h-12 bg-primary-foreground rounded-lg flex items-center justify-center mr-4">
+              <span className="text-primary font-bold text-xl">C</span>
             </div>
             <span className="text-2xl font-bold">CMS Full Form</span>
           </div>
@@ -55,7 +55,7 @@ export function LoginForm() {
           {/* Main Content */}
           <h1 className="text-4xl font-bold mb-6">Powerful Content Management System</h1>
 
-          <p className="text-xl text-slate-300 mb-12 leading-relaxed">
+          <p className="text-xl text-primary-foreground/80 mb-12 leading-relaxed">
             Streamline your content creation, manage multiple websites, and boost your productivity with our
             comprehensive CMS platform.
           </p>
@@ -63,68 +63,74 @@ export function LoginForm() {
           {/* Features */}
           <div className="space-y-6 mb-12">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
-                <div className="w-2 h-2 bg-blue-400 rounded-full" />
+              <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center mr-4">
+                <div className="w-2 h-2 bg-accent/60 rounded-full" />
               </div>
               <div>
                 <h3 className="font-semibold">Multi-site Management</h3>
-                <p className="text-slate-400 text-sm">Manage multiple websites from a single dashboard with ease.</p>
+                <p className="text-primary-foreground/70 text-sm">
+                  Manage multiple websites from a single dashboard with ease.
+                </p>
               </div>
             </div>
 
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-slate-500/20 rounded-full flex items-center justify-center mr-4">
-                <div className="w-2 h-2 bg-slate-400 rounded-full" />
+              <div className="w-8 h-8 bg-muted/20 rounded-full flex items-center justify-center mr-4">
+                <div className="w-2 h-2 bg-muted/60 rounded-full" />
               </div>
               <div>
                 <h3 className="font-semibold">Advanced Analytics</h3>
-                <p className="text-slate-400 text-sm">Track performance with detailed analytics and insights.</p>
+                <p className="text-primary-foreground/70 text-sm">
+                  Track performance with detailed analytics and insights.
+                </p>
               </div>
             </div>
 
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
-                <div className="w-2 h-2 bg-blue-400 rounded-full" />
+              <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center mr-4">
+                <div className="w-2 h-2 bg-accent/60 rounded-full" />
               </div>
               <div>
                 <h3 className="font-semibold">Team Collaboration</h3>
-                <p className="text-slate-400 text-sm">Work together seamlessly with role-based permissions.</p>
+                <p className="text-primary-foreground/70 text-sm">
+                  Work together seamlessly with role-based permissions.
+                </p>
               </div>
             </div>
           </div>
 
           {/* Testimonial */}
-          <blockquote className="border-l-4 border-blue-500 pl-6">
-            <p className="text-slate-300 italic mb-2">
+          <blockquote className="border-l-4 border-accent pl-6">
+            <p className="text-primary-foreground/80 italic mb-2">
               "This CMS has transformed how we manage our content. The interface is intuitive and the features are
               exactly what we needed."
             </p>
-            <cite className="text-sm text-slate-400">— John Doe, Content Manager</cite>
+            <cite className="text-sm text-primary-foreground/70">— John Doe, Content Manager</cite>
           </blockquote>
         </div>
       </div>
 
       {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-background">
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <div className="lg:hidden flex items-center justify-center mb-8">
-            <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mr-3">
-              <span className="text-white font-bold text-xl">C</span>
+            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-3">
+              <span className="text-primary-foreground font-bold text-xl">C</span>
             </div>
-            <span className="text-2xl font-bold text-slate-900">CMS Full Form</span>
+            <span className="text-2xl font-bold text-foreground">CMS Full Form</span>
           </div>
 
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome back</h2>
-            <p className="text-slate-600">Sign in to your account to continue managing your content</p>
+            <h2 className="text-3xl font-bold text-foreground mb-2">Welcome back</h2>
+            <p className="text-muted-foreground">Sign in to your account to continue managing your content</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Label htmlFor="email">Email address</Label>
               <div className="relative mt-1">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
                 <Input
                   id="email"
                   type="email"
@@ -140,7 +146,7 @@ export function LoginForm() {
             <div>
               <Label htmlFor="password">Password</Label>
               <div className="relative mt-1">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
@@ -152,7 +158,7 @@ export function LoginForm() {
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
@@ -167,25 +173,29 @@ export function LoginForm() {
                   checked={formData.rememberMe}
                   onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, rememberMe: checked as boolean }))}
                 />
-                <Label htmlFor="remember" className="text-sm text-slate-600">
+                <Label htmlFor="remember" className="text-sm text-muted-foreground">
                   Remember me
                 </Label>
               </div>
-              <Link href="/auth/forgot" className="text-sm text-slate-900 hover:text-slate-700 font-medium">
+              <Link href="/auth/forgot" className="text-sm text-foreground hover:text-muted-foreground font-medium">
                 Forgot password?
               </Link>
             </div>
 
-            <Button type="submit" className="w-full bg-slate-900 hover:bg-slate-800 text-white" disabled={isLoading}>
+            <Button
+              type="submit"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+              disabled={isLoading}
+            >
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-300" />
+                <div className="w-full border-t border-border" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-slate-500">OR CONTINUE WITH</span>
+                <span className="px-2 bg-background text-muted-foreground">OR CONTINUE WITH</span>
               </div>
             </div>
 
@@ -218,14 +228,14 @@ export function LoginForm() {
             </div>
 
             <div className="text-center">
-              <span className="text-slate-600">Don't have an account? </span>
-              <Link href="/auth/register" className="text-slate-900 hover:text-slate-700 font-medium">
+              <span className="text-muted-foreground">Don't have an account? </span>
+              <Link href="/auth/register" className="text-foreground hover:text-muted-foreground font-medium">
                 Sign up
               </Link>
             </div>
 
             <div className="text-center">
-              <Link href="/dashboard" className="text-sm text-slate-500 hover:text-slate-700">
+              <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
                 Continue as guest
               </Link>
             </div>

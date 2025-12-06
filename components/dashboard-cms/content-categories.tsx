@@ -1,7 +1,7 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
-import { MoreHorizontal, Plus, TrendingUp, TrendingDown } from "lucide-react"
+import { Plus, TrendingUp, TrendingDown } from "lucide-react"
 
 interface Category {
   id: string
@@ -18,7 +18,7 @@ const categories: Category[] = [
     name: "Technology",
     count: 156,
     change: 12.5,
-    color: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
+    color: "bg-chart-1/20 text-chart-1 dark:bg-chart-1/30 dark:text-chart-1/80",
     description: "Tech news & tutorials",
   },
   {
@@ -26,7 +26,7 @@ const categories: Category[] = [
     name: "Business",
     count: 142,
     change: 8.3,
-    color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
+    color: "bg-chart-2/20 text-chart-2 dark:bg-chart-2/30 dark:text-chart-2/80",
     description: "Business insights",
   },
   {
@@ -34,7 +34,7 @@ const categories: Category[] = [
     name: "Health",
     count: 98,
     change: -2.1,
-    color: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
+    color: "bg-destructive/20 text-destructive dark:bg-destructive/30 dark:text-destructive/80",
     description: "Health & wellness",
   },
   {
@@ -42,7 +42,7 @@ const categories: Category[] = [
     name: "Sports",
     count: 87,
     change: 15.7,
-    color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+    color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
     description: "Sports coverage",
   },
   {
@@ -50,7 +50,7 @@ const categories: Category[] = [
     name: "Entertainment",
     count: 76,
     change: 5.2,
-    color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400",
+    color: "bg-chart-4/20 text-chart-4 dark:bg-chart-4/30 dark:text-chart-4/80",
     description: "Entertainment news",
   },
   {
@@ -58,18 +58,18 @@ const categories: Category[] = [
     name: "Politics",
     count: 65,
     change: -8.4,
-    color: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400",
+    color: "bg-muted text-muted-foreground dark:bg-muted/30 dark:text-muted-foreground/80",
     description: "Political analysis",
   },
 ]
 
 export default function ContentCategories() {
   return (
-    <div className="bg-white dark:bg-[#0F0F12] rounded-xl p-6 border border-gray-200 dark:border-[#1F1F23]">
+    <div className="bg-card dark:bg-card rounded-xl p-6 border border-border dark:border-border">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Content Categories</h3>
-        <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          <Plus className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+        <h3 className="text-lg font-semibold text-foreground">Content Categories</h3>
+        <button className="p-2 hover:bg-secondary dark:hover:bg-secondary rounded-lg transition-colors">
+          <Plus className="h-4 w-4 text-muted-foreground dark:text-muted-foreground" />
         </button>
       </div>
 
@@ -77,43 +77,39 @@ export default function ContentCategories() {
         {categories.map((category) => (
           <div
             key={category.id}
-            className="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors group"
+            className="flex items-center justify-between p-3 hover:bg-secondary dark:hover:bg-secondary/50 rounded-lg transition-colors group"
           >
             <div className="flex items-center space-x-3 flex-1 min-w-0">
               <Badge className={`${category.color} border-0 flex-shrink-0`}>{category.name}</Badge>
               <div className="min-w-0 flex-1">
-                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{category.description}</p>
+                <p className="text-xs text-muted-foreground truncate">{category.description}</p>
               </div>
             </div>
 
             <div className="flex items-center space-x-2 flex-shrink-0">
               <div className="text-right">
-                <p className="text-sm font-medium text-gray-900 dark:text-white">{category.count}</p>
+                <p className="text-sm font-medium text-foreground">{category.count}</p>
                 <div className="flex items-center justify-end">
                   {category.change > 0 ? (
-                    <TrendingUp className="h-3 w-3 text-green-500 mr-1" />
+                    <TrendingUp className="h-3 w-3 text-emerald-500 mr-1" />
                   ) : (
-                    <TrendingDown className="h-3 w-3 text-red-500 mr-1" />
+                    <TrendingDown className="h-3 w-3 text-destructive mr-1" />
                   )}
-                  <span className={`text-xs ${category.change > 0 ? "text-green-600" : "text-red-600"}`}>
+                  <span className={`text-xs ${category.change > 0 ? "text-emerald-600" : "text-destructive"}`}>
                     {category.change > 0 ? "+" : ""}
                     {category.change}%
                   </span>
                 </div>
               </div>
-
-              
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+      <div className="mt-4 pt-4 border-t border-border dark:border-border">
         <div className="flex justify-between items-center text-sm">
-          <span className="text-gray-600 dark:text-gray-400">Total Articles</span>
-          <span className="font-medium text-gray-900 dark:text-white">
-            {categories.reduce((sum, cat) => sum + cat.count, 0)}
-          </span>
+          <span className="text-muted-foreground">Total Articles</span>
+          <span className="font-medium text-foreground">{categories.reduce((sum, cat) => sum + cat.count, 0)}</span>
         </div>
       </div>
     </div>
